@@ -20,8 +20,9 @@
 
 #generatedsentence2 {
 	font-size:1.25rem;
-	width:80%;
+	width:100%;
 	padding-left:10%;
+	padding-right:10%;
 }
 
 #screen2questions {
@@ -36,6 +37,7 @@
 
 .title {
 	font-size:1.953rem;
+	margin-top:30px;
 }
 
 #screen2questions {
@@ -48,4 +50,16 @@ label {
 
 .form-select {
 	font-size:0.8rem;
+}
+
+#pngprep{
+	display:none;
+}
+
+#downloadbuttons {
+	margin-top:30px;
+}
+
+#screen2buttons {
+	margin-top:30px;
 }

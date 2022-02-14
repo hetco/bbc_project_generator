@@ -38,19 +38,19 @@ let colorLookup = {
       "Colour": "#FF0032"
    },
    "Sport": {
-      "Colour": "#f8d455"
+      "Colour": "#f5c20a"
    },
    "Weather": {
-      "Colour": "#97CAEA"
+      "Colour": "#2b93d4"
    },
    "CBBC": {
       "Colour": "#9ED040"
    },
    "CBeebies": {
-      "Colour": "#FBE650"
+      "Colour": "#e1c705"
    },
    "Children’s Apps": {
-      "Colour": "#FBE650"
+      "Colour": "#e1c705"
    },
    "Bitesize": {
       "Colour": "#5C328D"
@@ -59,10 +59,10 @@ let colorLookup = {
       "Colour": "#53ADA0"
    },
    "Audience Platform": {
-      "Colour": "#B5E1D8"
+      "Colour": "#4ab5a0"
    },
    "Enterprise and Production Systems (internal)": {
-      "Colour": "#D6D681"
+      "Colour": "#c7c752"
    },
    "GEL (Global Experience Language) (internal)": {
       "Colour": "#f0c400"
@@ -71,29 +71,12 @@ let colorLookup = {
       "Colour": "#FFBC30"
    },
    "Portfolio Level Initiatives": {
-      "Colour": "#FFC1C8"
+      "Colour": "#ff6678"
    },
    "Research Ops (internal)": {
       "Colour": "#A37177"
    }
 };
-
-function getParameters(){
-	let url_string = window.location.href;
-	let url = new URL(url_string);
-
-	let lowerHipLine = url.searchParams.get("h");
-	let hipLineDepth = url.searchParams.get("hd");
-	let waist = url.searchParams.get("w");
-	let skirtLength = url.searchParams.get("l");
-	let bellyLineDepth = url.searchParams.get("bd");
-	let bellyWidth = url.searchParams.get("b");
-	console.log(waist);
-	if(lowerHipLine && hipLineDepth && waist && skirtLength && bellyLineDepth && bellyWidth){
-		console.log('updating measures');
-		updateMeasurements(lowerHipLine,hipLineDepth,waist,skirtLength,bellyLineDepth,bellyWidth)
-	}
-}
 
 function init(){
 	$('#buttons').hide();
@@ -131,9 +114,18 @@ function initQuestions(questions){
     	onChangeFunctionScreen2();
  	});
 
+  	$('.checkboxanswer4').change(function () {
+    	onChangeFunctionScreen2();
+ 	});
+
 	$('#next1').on('click',function(){
 		$('#screen1').hide();
 		$('#screen2').show();
+	});
+
+	$('#next2').on('click',function(){
+		let url = $('#next2').attr('data-url');
+		window.location.href = url;
 	});
 
 	$('#screen2questions').height(window.innerHeight-50);
@@ -150,13 +142,13 @@ function onChangeFunctionScreen1(questions){
 	questions.forEach(function(q){
 		q.value = $('#'+q.id).val();
 	});
-	console.log(questions);
+
 	updateScreen1(questions[0].value,questions[1].value,questions[2].value,questions[3].value);
 	return questions;
 }
 
 function onChangeFunctionScreen2(){
-	let questions = {'q1':'','q2':'','q3':'','q5':[],'q6':'','q7':'','q8':'','q9':'','q10':[],'q11':'','q12':[]}
+	let questions = {'q1':'','q2':'','q3':'','q4':'','q5':[],'q6':'','q7':'','q8':'','q9':'','q10':[],'q11':'','q12':[],'q13':[]}
 	questions.q5 = getAnswerQ5();
 	questions.q6 = $('#q6').val();
 	questions.q7 = $('#q7').val();
@@ -167,10 +159,12 @@ function onChangeFunctionScreen2(){
 	questions.q1 = $('#q1').val();
 	questions.q2 = $('#q2 option:selected').text();
 	questions.q3 = $('#q3 option:selected').text();
+	questions.q4 = $('#q4').val();
 	questions.q12 = getAnswerQ12();
-	console.log(questions);
+	questions.q13 = getAnswerQ13();
 	updateIcon(questions);
 	generateURL(questions);
+	return questions;
 }
 
 function getAnswerQ5(){
@@ -178,7 +172,7 @@ function getAnswerQ5(){
 	$(".checkboxanswer:checked").each(function() {
         list.push($(this).val());
     });
-    console.log(list);
+
 	return list;
 }
 
@@ -187,7 +181,7 @@ function getAnswerQ10(){
 	$(".checkboxanswer2:checked").each(function() {
         list.push($(this).val());
     });
-    console.log(list);
+
 	return list;
 }
 
@@ -196,21 +190,45 @@ function getAnswerQ12(){
 	$(".checkboxanswer3:checked").each(function() {
         list.push($(this).val());
     });
-    console.log(list);
+
+	return list;
+}
+
+function getAnswerQ13(){
+	let list = [];
+	$(".checkboxanswer4:checked").each(function() {
+        list.push($(this).val());
+    });
+
 	return list;
 }
 
 function updateIcon(questions){
 	initIcon();
+	let color = '';
+	if(colorLookup[questions.q1]!=undefined){
+		color = colorLookup[questions.q1]['Colour'];
+
+		$('.cls-4').css('stroke',color);
+		//$('.st4').css('fill',color);
+		$('.cls-0').css('stroke',color);
+		$('.cls-0').css('fill',color);
+		$('.cls-1').css('stroke',color);
+		$('.cls-1').css('fill',color);
+		$('#generatedsentence2').css('color',color);
+		$('.answertext').css('color',color);
+	}
+
 	questions.q5.forEach(function(stakeholder){
 		$('#Stake_'+stakeholder).show();
+		$('#Stake_'+stakeholder +' circle').css('fill',color);
+		$('#Stake_'+stakeholder +' text').css('fill','#ffffff');
 	});
 	$('#'+questions.q6).show();
-	console.log(questions.q6);
 	$('#'+questions.q7).show();
 	$('#'+questions.q8).show();
 	if(questions.q9=='external_audience'){
-		$('#audience_circle').css('stroke-width',8);
+		$('#audience_circle').css('stroke-width',6);
 	}
 	questions.q10.forEach(function(id){
 		$('#'+id).show();
@@ -219,7 +237,7 @@ function updateIcon(questions){
 	$('#'+questions.q11).show();
 	if(colorLookup[questions.q1]!=undefined){
 		let color = colorLookup[questions.q1]['Colour'];
-		console.log(color);
+
 		$('.cls-4').css('stroke',color);
 		//$('.st4').css('fill',color);
 		$('.cls-0').css('stroke',color);
@@ -234,14 +252,18 @@ function updateIcon(questions){
 	let text1 = '';
 	let text2 = '';
 	let text3 = '';
+	let breakpoint = 2
+	if(goalWordList.length>6){
+		breakpoint = 3
+	}
 	goalWordList.forEach(function(word,i){
-		if(i<2){
+		if(i<breakpoint){
 			text1 += word+' ';
 		}
-		if(i<4&&i>1){
+		if(i<breakpoint*2&&i>breakpoint-1){
 			text2 += word+' ';
 		}
-		if(i>3){
+		if(i>breakpoint*2-1){
 			text3 += word+' ';
 		}
 	});
@@ -252,12 +274,17 @@ function updateIcon(questions){
 		questions.q3='Practise';
 	}
 	$('#'+questions.q3).show();
-	console.log('#'+questions.q3);
+
 	
 	questions.q12.forEach(function(id){
 		$('#'+id).show();
 	});
-	console.log(questions.q12);
+	console.log(questions);
+	questions.q13.forEach(function(id){
+		$('#Stake_'+id).show();
+		$('#Stake_'+id +' circle').css('fill','#FFFFFF');
+		$('#Stake_'+id +' text').css('fill','#000000');
+	});
 }
 
 function updateScreen1(answer1, answer2, answer3, answer4){
@@ -272,7 +299,7 @@ function updateScreen1(answer1, answer2, answer3, answer4){
 		$('#buttons').hide();
 	}
 	let sentenceHTML = 'A project to <span class="answertext">' +answer2+ '</span> on <span class="answertext">'+answer1+'</span> by <span class="answertext">' + answer3+ '</span> <span class="answertext">'+answer4+'</span>';
-	console.log(sentenceHTML);
+
 	$('#generatedsentence').html(sentenceHTML);
 	$('#generatedsentence2').html(sentenceHTML);
 	if(colorLookup[questions.q1 = $('#q1').val()]!=undefined){
@@ -294,8 +321,7 @@ function generateURL(questions){
 			baseURL+= key + '=' + questions[key] +'&';
 		}
 	};
-	console.log(baseURL);
-
+	$('#next2').attr('data-url',baseURL);
 }
 
 init()
