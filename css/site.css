@@ -1,0 +1,51 @@
+.questionblock {
+	margin-top:30px;
+}
+
+.question {
+	font-size:1rem;
+	margin-bottom:8px;
+}
+
+.notes {
+	font-size:0.8em;
+	font-style:italic;
+}
+
+#generatedsentence {
+	font-size:1.953rem;
+	margin:30px;
+	min-height:300px;
+}
+
+#generatedsentence2 {
+	font-size:1.25rem;
+	width:80%;
+	padding-left:10%;
+}
+
+#screen2questions {
+	height:800px;
+	overflow: scroll;
+}
+
+#icon_1 {
+	width:50%;
+	margin-left:25%;
+}
+
+.title {
+	font-size:1.953rem;
+}
+
+#screen2questions {
+	padding-bottom:120px;
+}
+
+label {
+	font-size:0.8rem;
+}
+
+.form-select {
+	font-size:0.8rem;
+}
