@@ -78,6 +78,14 @@ let colorLookup = {
    }
 };
 
+let researchLookUp = {
+	'Exploratory':'exploring',
+	'Foundational':'understanding the needs and perceptions',
+	'Generative':'understanding the needs',
+	'Evaluative':'testing',
+	'Practise':'improving'
+}
+
 function initIcon(){
 	ids.forEach(function(id){
 		$('#'+id).hide();
@@ -182,7 +190,7 @@ function updateIcon(questions){
 }
 
 function updateSentence(questions){
-	let sentenceHTML = 'A project to <span class="answertext">' +questions['q2']+ '</span> on <span class="answertext">'+questions['q1']+'</span> by <span class="answertext">' + questions['q3']+ '</span> <span class="answertext">'+questions['q4']+'</span>';
+	let sentenceHTML = 'A project to <span class="answertext">' +questions['q2'].toLowerCase() + '</span> on <span class="answertext">'+questions['q1']+'</span> by <span class="answertext">' + researchLookUp[questions['q3']]+ '</span> <span class="answertext">'+questions['q4']+'</span>';
 	$('#generatedsentence2').html(sentenceHTML);
 }
 
