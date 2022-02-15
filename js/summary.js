@@ -81,7 +81,7 @@ let colorLookup = {
 let researchLookUp = {
 	'Exploratory':'exploring',
 	'Foundational':'understanding the needs and perceptions',
-	'Generative':'understanding the needs',
+	'Generative':'finding opportunities for',
 	'Evaluative':'testing',
 	'Practise':'improving'
 }
