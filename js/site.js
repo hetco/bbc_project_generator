@@ -61,10 +61,10 @@ let colorLookup = {
    "Audience Platform": {
       "Colour": "#4ab5a0"
    },
-   "Enterprise and Production Systems (internal)": {
+   "Enterprise and Production Systems": {
       "Colour": "#c7c752"
    },
-   "GEL (Global Experience Language) (internal)": {
+   "GEL (Global Experience Language)": {
       "Colour": "#f0c400"
    },
    "Emerging Experiences": {
@@ -73,7 +73,7 @@ let colorLookup = {
    "Portfolio Level Initiatives": {
       "Colour": "#ff6678"
    },
-   "Research Ops (internal)": {
+   "Research Ops": {
       "Colour": "#A37177"
    }
 };
