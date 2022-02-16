@@ -38,19 +38,19 @@ let colorLookup = {
       "Colour": "#FF0032"
    },
    "Sport": {
-      "Colour": "#f8d455"
+      "Colour": "#f5c20a"
    },
    "Weather": {
-      "Colour": "#97CAEA"
+      "Colour": "#2b93d4"
    },
    "CBBC": {
       "Colour": "#9ED040"
    },
    "CBeebies": {
-      "Colour": "#FBE650"
+      "Colour": "#e1c705"
    },
    "Children’s Apps": {
-      "Colour": "#FBE650"
+      "Colour": "#e1c705"
    },
    "Bitesize": {
       "Colour": "#5C328D"
@@ -59,21 +59,21 @@ let colorLookup = {
       "Colour": "#53ADA0"
    },
    "Audience Platform": {
-      "Colour": "#B5E1D8"
+      "Colour": "#4ab5a0"
    },
-   "Enterprise and Production Systems (internal)": {
-      "Colour": "#D6D681"
+   "Enterprise and Production Systems": {
+      "Colour": "#c7c752"
    },
-   "GEL (Global Experience Language) (internal)": {
+   "GEL (Global Experience Language)": {
       "Colour": "#f0c400"
    },
    "Emerging Experiences": {
       "Colour": "#FFBC30"
    },
    "Portfolio Level Initiatives": {
-      "Colour": "#FFC1C8"
+      "Colour": "#ff6678"
    },
-   "Research Ops (internal)": {
+   "Research Ops": {
       "Colour": "#A37177"
    }
 };
