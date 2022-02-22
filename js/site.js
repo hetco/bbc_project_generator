@@ -83,6 +83,7 @@ function init(){
 	//$('#screen1').hide();
 	$('#screen2').hide();
 	$('#screen3').hide();
+	$('#q2bblock').hide();
 	initQuestions(questions);
 	initIcon();
 	updateScreen1('', '', '', '');
@@ -142,7 +143,11 @@ function onChangeFunctionScreen1(questions){
 	questions.forEach(function(q){
 		q.value = $('#'+q.id).val();
 	});
-
+	console.log(questions);
+	if(questions[1].value == 'no suitable product goal'){
+		$('#q2bblock').show();
+		questions[1].value = $('#q2b').val();
+	}
 	updateScreen1(questions[0].value,questions[1].value,questions[2].value,questions[3].value);
 	return questions;
 }
@@ -157,7 +162,11 @@ function onChangeFunctionScreen2(){
 	questions.q10 = getAnswerQ10();
 	questions.q11 = $('#q11').val();
 	questions.q1 = $('#q1').val();
-	questions.q2 = $('#q2 option:selected').text();
+	//questions.q2 = $('#q2 option:selected').text();
+	questions.q2 = $('#q2').val();
+	if(questions.q2  == 'no suitable product goal'){
+		questions.q2  = $('#q2b').val();
+	}
 	questions.q3 = $('#q3 option:selected').text();
 	questions.q4 = $('#q4').val();
 	questions.q12 = getAnswerQ12();
