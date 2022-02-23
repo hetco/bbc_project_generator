@@ -190,14 +190,24 @@
                         </div>
                         <div class="row questionblock">
                             <div class="col-md-12">
-                                <p class="question">How confident are we about the impact this research will have on the product goal?</p>
+                                <p class="question">Do you think the research has potential to have high, medium or low impact on the product goal?</p>
+                                <select id="q14" class="form-select">
+                                    <option value=""></option>
+                                    <option value="high">High Impact</option><option value="medium">Medium Impact</option><option value="low">Low Impact</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row questionblock">
+                            <div class="col-md-12">
+                                <p class="question">How confident are you that the project will reach this potential impact?</p>
                                 <select id="q6" class="form-select">
                                     <option value=""></option>
                                     <option value="Target_100_">High Confidence</option><option value="Target_80_">Medium Confidence</option><option value="Target_50_">Low Confidence</option>
                                 </select>
-    
                             </div>
                         </div>
+
                         <div class="row questionblock">
                             <div class="col-md-12">
                                 <p class="question">When will the research outcomes be used by product / engineering?</p>
@@ -426,13 +436,13 @@
                                   </text>
                                </g>
                                <g id="Target_100_" data-name="Target 100%">
-                                  <circle cx="77.01" cy="128.3" r="8.9" />
+                                  <circle class="target_circle" cx="77.01" cy="128.3" r="8.9" />
                                </g>
-                               <g id="Target_80_" data-name="Target 80%">
-                                  <circle cx="85.51" cy="137.1" r="8.9" />
+                               <g id="Target_80_" cdata-name="Target 80%">
+                                  <circle class="target_circle" cx="85.51" cy="137.1" r="8.9" />
                                </g>
                                <g id="Target_50_" data-name="Target 50%">
-                                  <circle cx="94.41" cy="145.6" r="8.9" />
+                                  <circle  class="target_circle" cx="94.41" cy="145.6" r="8.9" />
                                </g>
                                <g id="Exploratory">
                                   <polygon class="cls-1" points="24.71 66.9 24.31 66.7 49.61 19.8 65.41 44.5 65.01 44.8 49.61 20.8 24.71 66.9" />

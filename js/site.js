@@ -153,7 +153,7 @@ function onChangeFunctionScreen1(questions){
 }
 
 function onChangeFunctionScreen2(){
-	let questions = {'q1':'','q2':'','q3':'','q4':'','q5':[],'q6':'','q7':'','q8':'','q9':'','q10':[],'q11':'','q12':[],'q13':[]}
+	let questions = {'q1':'','q2':'','q3':'','q4':'','q5':[],'q6':'','q7':'','q8':'','q9':'','q10':[],'q11':'','q12':[],'q13':[],'q14':'',}
 	questions.q5 = getAnswerQ5();
 	questions.q6 = $('#q6').val();
 	questions.q7 = $('#q7').val();
@@ -171,6 +171,7 @@ function onChangeFunctionScreen2(){
 	questions.q4 = $('#q4').val();
 	questions.q12 = getAnswerQ12();
 	questions.q13 = getAnswerQ13();
+	questions.q14 = $('#q14').val();
 	updateIcon(questions);
 	generateURL(questions);
 	return questions;
@@ -294,6 +295,16 @@ function updateIcon(questions){
 		$('#Stake_'+id +' circle').css('fill','#FFFFFF');
 		$('#Stake_'+id +' text').css('fill','#000000');
 	});
+
+	if(questions.q14=='high'){
+		$('.target_circle').attr('r',12)
+	}
+	if(questions.q14=='medium'){
+		$('.target_circle').attr('r',8.9)
+	}
+	if(questions.q14=='low'){
+		$('.target_circle').attr('r',6)
+	}
 }
 
 function updateScreen1(answer1, answer2, answer3, answer4){
